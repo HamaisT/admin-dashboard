@@ -3,27 +3,38 @@ import { auth } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Login = () => {
+const LoginN = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
 
-     const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          await signInWithEmailAndPassword(auth, email, password);
-          navigate("/dashboard");
-        } catch (err) {
-          setError("Invalid email or password");
-          console.error(err);
-        }
-      };
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     // Simulate login (replace with real auth later)
+  //     console.log({ email, password, rememberMe });
+  
+  //     // Clear fields (optional)
+  //     setEmail('');
+  //     setPassword('');
+  //     setRememberMe(false);
+  //   };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Invalid email or password");
+      console.error(err);
+    }
+  };
+
+  return(
+   <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">Admin Login</h2>
 
@@ -79,12 +90,11 @@ const Login = () => {
           >
             Login
           </button>
-          {error && <p className="text-red-500 mt-2 text-center">{error}</p>}
-
         </form>
       </div>
     </div>
-  );
+  )
 };
+export default LoginN;
 
-export default Login;
+
