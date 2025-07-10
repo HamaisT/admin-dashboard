@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../redux/usersSlice";
 import { BarChart, Bar, PieChart, Pie, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { motion } from "framer-motion";
 
 const Users = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -109,32 +110,49 @@ const domainData = Object.entries(
 
         </div>
 
-          {/* Table */}
-          <div className="overflow-x-auto bg-white shadow-md rounded-md p-4 mb-6">
+        <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        >
+        <table className="min-w-full table-auto bg-white rounded-md shadow">
+            {/* Table */}
+        <div className="overflow-x-auto bg-white shadow-md rounded-md p-4 mb-6">
             <table className="min-w-full text-sm">
-              <thead className="text-left border-b">
+            <thead className="text-left border-b">
                 <tr>
-                  <th className="p-2">Name</th>
-                  <th className="p-2">Email</th>
-                  <th className="p-2">City</th>
-                  <th className="p-2">Company</th>
+                <th className="p-2">Name</th>
+                <th className="p-2">Email</th>
+                <th className="p-2">City</th>
+                <th className="p-2">Company</th>
                 </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
                 {filteredUsers.map((user) => (
-                  <tr key={user.id} className="border-b">
+                <tr key={user.id} className="border-b">
                     <td className="p-2">{user.name}</td>
                     <td className="p-2">{user.email}</td>
                     <td className="p-2">{user.address.city}</td>
                     <td className="p-2">{user.company.name}</td>
-                  </tr>
+                </tr>
                 ))}
-              </tbody>
+            </tbody>
             </table>
-          </div>
+        </div>
+        
+        </table>
+        </motion.div>
 
-          {/* Chart */}
-          <div className="bg-white shadow-md rounded-md p-4">
+            {/* chart cards */}
+        <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
+        >
+       
+        <div className="bg-white shadow-md rounded-md p-4">
             <h3 className="text-lg font-semibold mb-2">City Name Length per User</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={chartData}>
@@ -145,38 +163,47 @@ const domainData = Object.entries(
               </BarChart>
             </ResponsiveContainer>
           </div>
+        </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-        {/* Bar Chart */}
-        <div className="bg-white p-6 rounded shadow">
-            <h3 className="text-lg font-semibold mb-4">Users per City</h3>
-            <BarChart width={350} height={300} data={cityData}>
-            <XAxis dataKey="city" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="count" fill="#3b82f6" />
-            </BarChart>
-        </div>
+           {/* chart cards */}
+        <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
+        >
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"> */}
+            {/* Bar Chart */}
+            <div className="bg-white p-6 rounded shadow">
+                <h3 className="text-lg font-semibold mb-4">Users per City</h3>
+                <BarChart width={350} height={300} data={cityData}>
+                <XAxis dataKey="city" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="count" fill="#3b82f6" />
+                </BarChart>
+            </div>
 
-        {/* Pie Chart */}
-        <div className="bg-white p-6 rounded shadow">
-            <h3 className="text-lg font-semibold mb-4">Email Domain Split</h3>
-            <PieChart width={350} height={300}>
-            <Pie
-                data={domainData}
-                dataKey="count"
-                nameKey="domain"
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                fill="#10b981"
-                label
-            />
-            <Tooltip />
-            </PieChart>
-        </div>
-    </div>
-
+            {/* Pie Chart */}
+            <div className="bg-white p-6 rounded shadow">
+                <h3 className="text-lg font-semibold mb-4">Email Domain Split</h3>
+                <PieChart width={350} height={300}>
+                <Pie
+                    data={domainData}
+                    dataKey="count"
+                    nameKey="domain"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    fill="#10b981"
+                    label
+                />
+                <Tooltip />
+                </PieChart>
+            </div>
+        {/* </div> */}
+        </motion.div>
 
         </>
       )}
