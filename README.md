@@ -1,12 +1,47 @@
-# React + Vite
+# Admin Dashboard (React + Firebase + Redux)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo: [admin-dashboard.vercel.app](https://admin-dashboard-1nof.vercel.app)
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Firebase Authentication (Login, Signup with Role: Admin/Editor)
+- 🎨 TailwindCSS responsive layout
+- 📊 User Data Visualization (Recharts)
+- 🔄 Redux Toolkit (Global State + AsyncThunk API)
+- 🔒 Protected Routes & Role-Based Sidebar
+- 🎥 Framer Motion Animations
+- ✅ Deployed via Vercel
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite
+- Redux Toolkit
+- Firebase Auth
+- Recharts
+- Tailwind CSS
+- Framer Motion
+
+## 📸 Screenshots
+
+_(Add 1–2 screenshots of dashboard and login)_
+
+## 🧪 Test Credentials
+
+Email: test@gmail.com
+Password: @12345
+Role: Editor
+
+
+## 📂 Project Structure
+
+- `/pages` – Dashboard, Login, Users, Settings
+- `/redux` – Redux store and slices
+- `/layout` – DashboardLayout with Sidebar
+- `/firebase` – Firebase config
+
+## 📦 Setup
+
+```bash
+npm install
+npm run dev
+
