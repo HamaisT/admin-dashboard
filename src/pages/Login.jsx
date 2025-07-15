@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -73,9 +74,16 @@ const Login = () => {
             </a>
           </div>
 
+          <p className="text-sm mt-2">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-600 underline">
+              Signup
+            </Link>
+          </p>
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition mt-4"
           >
             Login
           </button>

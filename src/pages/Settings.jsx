@@ -1,14 +1,14 @@
+import { auth } from "../firebase/firebaseConfig";
 const Settings = () => {
-  return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold mb-4">Settings</h2>
+  const user = auth.currentUser;
 
-      <div className="bg-white p-6 rounded-md shadow-md">
-        <p className="text-gray-600">Coming Soon: App preferences, user settings, and more.</p>
-      </div>
+  return (
+    <div className="bg-white p-6 rounded shadow">
+      <h2 className="text-2xl font-bold mb-4">Account Settings</h2>
+      <p><strong>Email:</strong> {user?.email}</p>
+      <p><strong>Name:</strong> {user?.displayName || "N/A"}</p>
     </div>
   );
 };
 
 export default Settings;
-

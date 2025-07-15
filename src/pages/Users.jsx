@@ -129,7 +129,7 @@ const domainData = Object.entries(
             </thead>
             <tbody>
                 {filteredUsers.map((user) => (
-                <tr key={user.id} className="border-b">
+                <tr key={user.id} className="hover:bg-gray-100 transition border-b">
                     <td className="p-2">{user.name}</td>
                     <td className="p-2">{user.email}</td>
                     <td className="p-2">{user.address.city}</td>
